@@ -1,0 +1,181 @@
+@import 'variables';
+@import 'general';
+@import 'mixins';
+@import 'animations';
+
+body {
+  @include setProps($bg: $gradient-primary);
+  @include flex($direction: column, $justify: start);
+  padding-top: 9rem;
+}
+
+#main {
+  width: 100%;
+}
+
+.container {
+  --max-width: 22.9375rem;
+  $padding: 1rem;
+
+  margin-inline: auto;
+  min-width: 20.4375rem;
+  width: min(var(--max-width), 100% - ($padding * 2));
+
+  @include breakpoint(970) {
+    --max-width: 57.5rem;
+  }
+}
+
+.faq {
+  @include setProps;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15), 0 2rem 3rem rgba(0, 0, 0, 0.1);
+  display: grid;
+  position: relative;
+
+  @include breakpoint(970) {
+    grid-template-columns: auto 1fr;
+  }
+
+  &__image {
+    @include flex;
+    background: url(../images/bg-pattern-mobile.svg) no-repeat center top;
+    height: 8.625rem;
+    margin-inline: auto;
+    width: 100%;
+
+    @include breakpoint(970) {
+      background-position-x: right 4.5rem;
+      background-position-y: top 65%;
+      background-size: 200%;
+      background-image: url(../images/bg-pattern-desktop.svg);
+      background-repeat: no-repeat;
+      height: 100%;
+      width: 26.875rem;
+      overflow: hidden;
+      margin-inline: 0;
+    }
+
+    &::after {
+      @include breakpoint(970) {
+        content: url(../images/illustration-box-desktop.svg);
+        position: absolute;
+        left: -93px;
+        top: 171px;
+        width: 2rem;
+
+        animation: floating 3s infinite linear;
+      }
+    }
+
+    & img {
+      padding-inline: 2.8125rem;
+      position: absolute;
+      top: 0;
+      transform: translateY(-60%);
+      height: 19.875rem;
+
+      @include breakpoint(970) {
+        padding-inline: 0;
+        position: static;
+        transform: translate(-17%, 0);
+        height: auto;
+        width: 100%;
+      }
+    }
+  }
+
+  &__content {
+    @include flex($direction: column);
+    padding: 0 1rem 3rem 1rem;
+
+    @include breakpoint(970) {
+      padding: 3.75rem 5rem 4.375rem 2.25rem;
+    }
+  }
+
+  &__title {
+    color: $clr-primary-400;
+    font-size: $fs-700;
+    font-weight: $fw-bold;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    width: 100%;
+
+    @include breakpoint(970) {
+      font-size: $fs-600;
+      text-align: left;
+      margin-bottom: 0.9375rem;
+    }
+  }
+
+  &__accordion {
+    border-bottom: 1px solid $clr-neutral-300;
+    width: 100%;
+  }
+
+  &__question {
+    @include flex($justify: space-between);
+    cursor: pointer;
+    font-size: $fs-500;
+    padding-block: 1rem;
+    position: relative;
+    width: 100%;
+
+    &::marker {
+      content: '';
+      display: none;
+    }
+
+    &::after {
+      content: url(../images/icon-arrow-down.svg);
+
+      @include breakpoint(970) {
+        padding-inline: 0.75rem;
+      }
+    }
+  }
+
+  &__accordion[open] &__question {
+    color: $clr-primary-400;
+    font-weight: $fw-bold;
+    padding-block: 1rem 0;
+
+    &::after {
+      animation: flipArrow 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+    }
+  }
+
+  &__answer {
+    color: $clr-neutral-400;
+    max-width: 35ch;
+    padding-block: 0.5rem 1rem;
+    transform-origin: top;
+
+    @include breakpoint(970) {
+      max-width: 48ch;
+    }
+  }
+
+  &__accordion[open] &__answer {
+    animation: slideDown 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+  }
+}
+
+.footer {
+  bottom: 1rem;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+
+  &,
+  & a {
+    color: $clr-neutral-300;
+    text-decoration: none;
+  }
+
+  & a:hover {
+    text-decoration: underline;
+  }
+}

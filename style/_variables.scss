@@ -1,0 +1,31 @@
+////////////////////// VARIABLES //////////////////////
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+// FONTS ----------------------------------------
+$ff-primary: 'Kumbh Sans', sans-serif;
+
+$fs-300: 0.5rem;
+$fs-400: 0.75rem;
+$fs-500: 0.8125rem;
+$fs-600: 1.8rem;
+$fs-700: 2rem;
+
+$fw-regular: 400;
+$fw-bold: 700;
+
+// COLORS ----------------------------------------
+// Primary
+$clr-primary-400: hsl(238, 29%, 16%);
+$clr-accent-400: hsl(14, 88%, 65%);
+
+// Neutral
+$clr-neutral-100: hsl(0, 0%, 100%);
+$clr-neutral-300: hsl(240, 5%, 91%);
+$clr-neutral-400: hsl(240, 6%, 50%);
+$clr-neutral-500: hsl(237, 12%, 33%);
+
+// Gradient
+$clr-gradient-top: hsl(273, 75%, 66%);
+$clr-gradient-bottom: hsl(240, 73%, 65%);
+
+$gradient-primary: linear-gradient(to top, $clr-gradient-bottom, $clr-gradient-top);

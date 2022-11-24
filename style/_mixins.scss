@@ -1,0 +1,19 @@
+@mixin flex($direction: row, $align: center, $justify: center, $gap: 0) {
+  display: flex;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+  justify-content: $justify;
+}
+
+@mixin setProps($bg: $clr-neutral-100, $ff: $ff-primary, $fs: $fs-400) {
+  background: $bg;
+  font-family: $ff;
+  font-size: $fs;
+}
+
+@mixin breakpoint($value) {
+  @media screen and (min-width: (($value / 16) + 'rem')) {
+    @content;
+  }
+}
